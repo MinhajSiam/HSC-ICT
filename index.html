@@ -1,1271 +1,170 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en" ng-app='ictapp'>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>HSC ICT Online -
-        Home Page </title>
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="description"
-        content="eLRL - eLearning Research Lab education and experiment study site, HSC ICT book, and online learning interactive system. Home Page" />
-    <meta name="facebook-domain-verification" content="6lf1tfes8a1o06rpbh8yytztb129rn" />
-    <link rel="shortcut icon" href="https://hscict.org/assets/img/favicon.ico" type="image/x-icon">
-    </link>
-    <link rel="icon" href="https://hscict.org/assets/img/favicon.ico" type="image/x-icon">
-    </link>
-    <link rel="stylesheet" href="https://hscict.org/assets/css/probar.min.css">
-    </link>
-    <script type="text/javascript" src="https://hscict.org/assets/js/probar.js"></script>
-    <!-- <script type="text/javascript" src="https://hscict.org/assets/jslib/jquery.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- <script type="text/javascript" src="https://hscict.org/assets/jslib/angular.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script type="text/javascript" src="https://hscict.org/assets/js/welcome_page.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CKNXK56ERY"></script>
-    <script>
-        if (document.location.hostname.search("hscict.org") !== -1) {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiant Education</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: "Hind Siliguri", serif;
+            margin: 10px;
+            padding: 0;
+            height: 100vh;
+            /* Full height of viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Vertically center */
+            align-items: center;
+            /* Horizontally center */
+            text-align: center;
+            /* background: linear-gradient(-45deg, #FDA766, #FD7F2C); */
+            background: linear-gradient(-45deg, #00498D, #00172D);
+            /* , #ffb374, #ef5f5f */
+            animation: bg 12s ease infinite;
+        }
 
-            gtag('config', 'G-CKNXK56ERY');
+        @keyframes bg {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
-    </script>
-    <!-- Meta Pixel Code -->
-    <script>
-        if (document.location.hostname.search("hscict.org") !== -1) {
-            !function (f, b, e, v, n, t, s) {
-                if (f.fbq) return; n = f.fbq = function () {
-                    n.callMethod ?
-                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-                };
-                if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-                n.queue = []; t = b.createElement(e); t.async = !0;
-                t.src = v; s = b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t, s)
-            }(window, document, 'script',
-                'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1017157016677456');
-            fbq('track', 'PageView');
+
+        h1,
+        h3 {
+            margin: 10px 0;
+            word-wrap: break-word;
+            /* Ensures text doesn't overflow */
+            color: #fff;
         }
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1017157016677456&ev=PageView&noscript=1" /></noscript>
-    <!-- End Meta Pixel Code -->
+
+        h1 {
+            font-size: 50px;
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+        }
+
+        /* Form Styles */
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        input,
+        select {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 16px;
+            color: #333;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #FD7F2C;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #FD7F2C;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 15px;
+                width: 90%;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 
-<body id="myControler" ng-controller="ictcontroll" ng-click="getPosition($event)" ng-init="base='https://hscict.org/';"
-    baseurl="https://hscict.org/">
-    <!-- <body ng-controller='qus_controller'> -->
-    <!-- <div id="preloaderOn"><div></div></div> -->
-    <div id="probar">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <div id="body">
-
-        <nav class="navbar-expand-md navbar fixed-top topbar p-0">
-            <div class="container p-0">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-
-                <div class="navbar-header">
-                    <a href="#" class="logos">
-                        <img src="Logo 2.png" alt="">
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto">
-                    </ul>
-                    <ul class="navbar-nav">
-                        <!-- <li ng-click="showText=!showText" ng-init="showText=true">Show</li> -->
-                        <li class="nav-item dropdown me-auto">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <ion-icon size="large" name="book-outline"></ion-icon> ICT Chapters</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item spelink hvr-sweep-to-right"
-                                    href="https://hscict.org/welcome/allbook/nctb_chapter1">তথ্য ও যোগাযোগ প্রযুক্তি:
-                                    বিশ্ব ও বাংলাদেশ
-                                    পরিচিতি</a>
-                                <a class="dropdown-item spelink hvr-sweep-to-right"
-                                    href="https://hscict.org/welcome/allbook/nctb_chapter2">কমিউনিকেশন সিস্টেমস ও
-                                    নেটওয়ার্কিং</a>
-                                <a class="dropdown-item spelink hvr-sweep-to-right"
-                                    href="https://hscict.org/welcome/allbook/nctb_chapter3">সংখ্যা পদ্ধতি ও ডিজিটাল
-                                    ডিভাইস</a>
-                                <a class="dropdown-item spelink hvr-sweep-to-right"
-                                    href="https://hscict.org/welcome/allbook/nctb_chapter4">ওয়েব ডিজাইন পরিচিতি এবং
-                                    এইচটিএমএল</a>
-                                <a class="dropdown-item spelink hvr-sweep-to-right"
-                                    href="https://hscict.org/welcome/allbook/nctb_chapter5">প্রোগ্রামিং ভাষা</a>
-                                <a class="dropdown-item hvr-sweep-to-right"
-                                    href="https://hscict.org/welcome/allbook/nctb_chapter6">ডেটাবেজ
-                                    ম্যানেজমেন্ট সিস্টেম </a>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false" href="#"><ion-icon name="person-circle-outline"></ion-icon> Login
-                                <span class="glyphicon glyphicon-log-in"></span></a>
-                            <div class="dropdown-menu dropdown-menu-end logins p-3" style="min-width: 250px;">
-                                <form id="formLogin" method="POST" action="https://hscict.org/manage/login"
-                                    class="form">
-                                    <div class="form-group mt-3 pl-2">
-                                        <input type="text" placeholder="আইডি বা ই-মেইল" class="form-control mb-3"
-                                            name='username' id="usr" />
-                                        <div class="input-group mb-3" ng-init="showpass=true">
-                                            <input type="password" placeholder="পাসওয়ার্ড" class="form-control"
-                                                name="password" ng-model="password" ng-show="showpass">
-                                            <input type="text" placeholder="পাসওয়ার্ড" class="form-control"
-                                                name="password" ng-model="password" ng-show="!showpass">
-                                            <div class="input-group-text p-0" ng-click="showpass=!showpass"
-                                                ng-click="showpass=!showpass">
-                                                <span class="btn" id="basic-addon2">
-                                                    <ion-icon name="eye-outline" ng-show="showpass"></ion-icon>
-                                                    <ion-icon name="eye-off-outline" ng-show="!showpass"></ion-icon>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-center mb-3">
-                                        <input type="submit" id="btnLogin" class="btn btn-primary hvr-round-corners"
-                                            value="প্রবেশ করুন">
-                                        <a class="btn btn-info mt-2"
-                                            href="https://forms.gle/iNeWexDRcPcKoXVt8">অ্যাকাউন্ট নেই? এখনই নিবন্ধন
-                                            করুন!</a>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-        </nav>
-        <section id="mainContent">
-
-
-
-            <div class="container-fluid homebg mt70">
-                <div class="row mo-block">
-                    <div class="col-12" style="padding: 0;" ng-init="useremail=''">
-                        <div class="banner">
-                            <div class="container">
-                                <div class="row justify-content-center ">
-                                    <div class="col-12 col-md-6 col-lg-8 pt-3">
-                                        <div class="py-5 px-5 mt-5 text-center banner-text rounded">
-                                            <div class="col"> <!-- mt-5 pt-5 -->
-                                                <h1 class="h1 css-selector-demo">এইচএসসি আইসিটি অনলাইন</h1>
-                                            </div>
-                                            <div class=""> <!-- mb-5 pb-5 -->
-                                                <h5 class="h5">বাংলাদেশের এইচএসসি লেভেলের আইসিটি শিক্ষার্থীদের জন্য
-                                                    সর্বপ্রথম ওয়েব ভিত্তিক ইন্টার‍্যাক্টিভ প্লাটফর্ম।</h5>
-                                                <!-- <h6 class="h5">দ্রষ্টব্য:  সিস্টেম ব্যাবহারকারীর রেঙ্কিং আরও নির্ভুলতার জন্য  আরও আপডেট অ্যালগরিদম ব্যবহার করা হয়েছে। </h6> -->
-                                            </div>
-                                            <div class="">
-                                                <!--		<div class="p-5 d-inline-block rounded shadow" style="background:#d3f3f4">
-										<h1 class="display-6 text-warning fw-bolder" style="margin-bottom: 0 !important;">হ্যান্ডস-অন এইচএসসি আইসিটি </h1><h1 class="text-danger">সি প্রোগ্রামিং ক্রাশ কোর্স</h1>
-										<div>বিশ্ববিদ্যালয়ে নবাগত শিক্ষার্থীদের প্রাক-প্রোগ্রামিং প্রস্তুতি</div>
-										<div class="col-12 text-center pt-3"> -->
-                                                <!-- <div class="px-4 py-2 d-inline-block text-white bg-danger bgshade rounded-pill px-4 fs-6">শীঘ্রই আসছে....</div> -->
-                                                <!--	<a href="https://hscict.org/course" class="btn btn-danger bgshade rounded-pill px-4 fs-6">কোর্সে নিবন্ধন করুন</a>
-										</div> 
-									</div> -->
-                                                <!-- <a href="#bookitems" class="btn btn-warning btn-lg py-3 px-3 shadow">আইসিটি অধ্যায়সমূহ</a> -->
-                                                <!-- <div class="btn btn-dark btn-sm shadow" data-bs-toggle="modal"
-										data-bs-target="#android_app">
-										<div data="https://hscict.org/assets/imgs/android.webp" style="width: 130px"
-											class="bgimg"></div>
-									</div> -->
-                                                <!-- <a href="https://hscict.org/survey" class="btn btn-info btn-lg py-3 px-3 shadow">Survey</a> -->
-                                            </div>
-                                            <!-- <div class="col-12 mt-5">
-									<h5  class="h5">বিশ্ববিদ্যালয় শিক্ষার্থীরা C প্রোগ্রামিং শেখার জন্য আমাদের Undergrad C সিস্টেমে ভিজিট করুন। </h5>
-									<a class="btn btn-info shadow" href="https://ugc.hscict.org">Undergrad C</a>
-								</div> -->
-
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-
-                                    <div class="col-12 col-md-6 col-lg-4 my-5">
-                                        <div class="my-3">
-                                            <div class="card p-4 wh-tr-bg">
-                                                <form method="POST" action="https://hscict.org/manage/login"
-                                                    class="form">
-                                                    <div class="">
-                                                        <div class="form-dsc text-center mb-3">
-                                                            <h4 class="m-0">লগ-ইন ফর্ম</h4><small>আপনার একাউন্টে লগইন
-                                                                করুন</small>
-                                                        </div>
-                                                        <div>
-                                                            <label for="" class="m-0">আইডি বা ই-মেইল</label>
-                                                            <input type="text" placeholder="আইডি বা ই-মেইল"
-                                                                class="form-control mb-3" name='username' required>
-                                                        </div>
-                                                        <div class="">
-                                                            <label for="" class="m-0">পাসওয়ার্ড</label>
-                                                            <div class="input-group mb-3" ng-init="showpass=true">
-                                                                <input type="password" class="form-control"
-                                                                    name="password" placeholder="পাসওয়ার্ড"
-                                                                    aria-label="Recipient's username"
-                                                                    aria-describedby="basic-addon2" ng-model="password"
-                                                                    ng-show="showpass">
-                                                                <input type="text" class="form-control" name="password"
-                                                                    placeholder="পাসওয়ার্ড"
-                                                                    aria-label="Recipient's username"
-                                                                    aria-describedby="basic-addon2" ng-model="password"
-                                                                    ng-show="!showpass">
-                                                                <div class="input-group-text p-0"
-                                                                    ng-click="showpass=!showpass"
-                                                                    ng-click="showpass=!showpass">
-                                                                    <span class="btn" id="basic-addon2">
-                                                                        <ion-icon name="eye-outline"
-                                                                            ng-show="showpass"></ion-icon>
-                                                                        <ion-icon name="eye-off-outline"
-                                                                            ng-show="!showpass"></ion-icon>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                            <!-- <div class="">
-													<label for="rememberme" class=""><input name="eael-rememberme" type="checkbox" class="" value="forever"> আমাকে মনে রাখুন</label>
-												</div> -->
-                                                            <div class=""><a href="https://hscict.org/userman/reqpass"
-                                                                    class="btn btn-blank w-100 btnml">পাসওয়ার্ড ভুলে
-                                                                    গেছেন?</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <input type="submit" class="btn btn-primary hvr-round-corners"
-                                                            value="প্রবেশ করুন"><br>
-                                                        <a class="btn btn-info mt-2 btnml"
-                                                            href="https://forms.gle/iNeWexDRcPcKoXVt8">অ্যাকাউন্ট
-                                                            নেই? এখনই নিবন্ধন করুন!</a>
-                                                        <!-- <a class="btn hvr-round-corners" href="https://hscict.org/manage/login" style="background: rgba(255,255,255,0.9);"><ion-icon name="logo-facebook"></ion-icon> / <ion-icon name="logo-facebook"></ion-icon></a> -->
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 statistics">
-                        <div class="container" style="margin-top: -50px;">
-                            <div class="row justify-content-center text-center">
-                                <div class="col-12">
-                                    <div class="row justify-content-center bg-white rounded-4 shadow">
-                                        <div class="col-6 col-sm-6 col-md-3 border-end">
-                                            <div class="p-3 hint"
-                                                txt="ইনস্টিটিউটের সংখ্যা যেখানে ব্যবহারকারী নিজেদের অন্তর্ভুক্ত করেছেন"
-                                                color="white" bgcolor="orange">
-                                                <h1 class="counter display-2 m-0 text-info" data-emergence="hidden">
-                                                    67 </h1>
-                                                <h5 class="m-0 pb-3">প্রতিষ্ঠান সংখ্যা</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-3">
-                                            <div class="p-3">
-                                                <h1 class="counter display-2 m-0 text-warning" data-emergence="hidden">
-                                                    95 </h1>
-                                                <h5 class="m-0 pb-3">মোট শিক্ষক</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-3 border-end">
-                                            <div class="p-3 hint" txt="ছাত্র হিসাবে নিবন্ধিত ব্যবহারকারীদের সংখ্যা।"
-                                                color="white" bgcolor="orange">
-                                                <h1 class="counter display-2 m-0 text-danger" data-emergence="hidden">
-                                                    2945 </h1>
-                                                <h5 class="m-0 pb-3">মোট শিক্ষার্থী</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-3">
-                                            <div class="p-3 hint"
-                                                txt="আমাদের সিস্টেমে সমস্ত তালিকাভুক্ত ব্যবহারকারীর সংখ্যা।"
-                                                color="white" bgcolor="orange">
-                                                <h1 class="counter display-2 m-0 text-success" data-emergence="hidden">
-                                                    5170 </h1>
-                                                <h5 class="m-0 pb-3">মোট সদস্য</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 chapters">
-                        <div class="container">
-                            <div class="row">
-                                <!-- <div class="col-12 col-md-5 col-lg-4">
-						<div class="card wh-tr-bg">
-							<div class=''>
-  <rankinglist ng-init="base='https://hscict.org/'"></rankinglist>
-</div>
-<script type="text/javascript">
-  app.directive("rankinglist", function () {
-    return {
-      restrict: "E",
-      scope: {
-        drama: '=',
-        rating: '@',
-        display: '&'
-      },  // {} will free up $scope and scope
-
-      controller: function ($scope, $timeout, $http, $window) {
-        let addr = 'https://hscict.org/';
-        window.onload = function () { setTimeout(function () { $scope.loadRankings(); }, 2000); }
-        $scope.testData = "Ranking";
-
-        $scope.loadRankings = function () {
-          $http({
-            method: "POST", url: addr + "/rank/col_result", data: { section: '2' },
-            header: { 'Content-Type': 'application/x-www-form-urlencoded' }
-          }).then(function (data) {
-            let dts = data.data;
-            // console.log(dts);
-            $scope.selfpos = dts.per;
-            $scope.topstd = dts.top;
-            $scope.instscore = dts.insts;
-            $scope.institute = dts.institute;
-            $scope.uinfo = dts.uinfo;
-            $scope.utype = false;
-            if (dts.types == 'S') $scope.utype = true;
-          });
-        }
-        // $scope.userinfo = function() {
-        //   $http({
-        // 		method: "POST", url: addr+"/rank/col_result", data: {	section: '7' },
-        // 		header: {'Content-Type': 'application/x-www-form-urlencoded'}
-        // 	}).then(function (data) {
-        //     console.log(data.data);
-        //     $scope.uinfo = data['data'];
-        //     if($scope.uinfo.user!==undefined)
-        //       if($scope.rankings.points[$scope.uinfo.user.email]!==undefined)
-        //         $scope.loc = parseInt($scope.rankings.points[$scope.uinfo.user.email].ord/10)*10;
-        //   });
-        // }
-      },
-      template:
-        "<div class='row'>" +
-        "<div class='col-12 col-md-6'>" +
-        "<table class='rnktable'>" +
-        "<tr><th class='p-2 text-center' colspan=3>সেরা শিক্ষার্থী তালিকা</th></tr>" +
-        "<tr class='rnkhed'><td>নাম</td><td>স্থান</td><td>নম্বর</td></tr>" +
-        "<tr class='rnkitm' ng-repeat='(k, v) in topstd' ng-if='k<=10'><td class='py-0 name'>{{v.name}}<br><h6 class='p-0 badge text-start' style='white-space: normal;'>{{institute[v.institute].name | limitTo: 40}}</h6></td><td>{{$index+1}}</td><td class='py-0 text-end pr-3'><b>{{v.total | number: 1}}k</b></td></tr>" +
-        "</table>" +
-        "</div>" +
-        "<div class='col-12 col-md-6 profile' ng-if='uinfo.user'>" +
-        "<div class='bgimg border-info rounded-circle border' data='https://hscict.org/assets/bk/ict/user/{{uinfo.file}}' style='width: 80px; height: 80px;' ></div>" +
-        "<h6 class='h6 name'>{{uinfo.name}}</h6>" +
-        // "<div class='col-12 col-md-6 row no-gutters' ng-if='uinfo.user'>"+
-        //   "<span class='col-6'>Position: {{rankings.points[uinfo.user].ord}}</span>"+
-        //   "<p class='col-6'>Points<br>{{rankings.points[uinfo.user].point | number : 2}}</p>"+
-        // "</div>"+
-        "<table class='rnktable' ng-init='position=rankings.points[uinfo.user].ord' ng-if='uinfo.user && utype'>" +
-        "<tr><th class='p-2 text-center' colspan=3>Your Position - {{uinfo.rnknum}}</th></tr>" +
-        "<tr class='rnkhed'><td>নাম</td><td>স্থান</td><td>নম্বর</td></tr>" +
-        "<tr class='rnkitm' ng-class='{selected: v.rnknum==uinfo.rnknum}' ng-repeat='(k, v) in selfpos'><td>{{v.name}}</td><td>{{v.rnknum}}</td><td>{{v.total | number: 1}}k</td></tr>" + //&& k>=loc && k<=(loc+10)
-        "</table>" +
-        "<table class='rnktable' ng-if='!utype'>" +
-        "<tr><th class='p-2 text-center' colspan=3>সেরা শিক্ষা প্রতিষ্ঠান তালিকা</th></tr>" +
-        "<tr class='rnkhed'><td>নাম</td><td>Point</td></tr>" +
-        "<tr class='rnkitm' ng-repeat='(k, v) in instscore' ng-if='k<=10'><td class='name'>{{institute[v.inid].name}}<span ng-if='!v.inid'>Undefined</span></td><td class='text-end pr-3'><b>{{v.point | number: 1}}k</b></td></tr>" +
-        "</table>" +
-        "</div>" +
-        "<div class='col-12' ng-if='uinfo.email'>" +
-        // "<a href='https://hscict.org/rank/result_page' class='btn btn-blnk w-100'><ion-icon name='bar-chart-outline'></ion-icon> complete Result</a>"+
-        "</div>" +
-        "</div>"
-    };
-    //  http://localhost/ictcoursenew/assets/bk/ict/user/Agusta.jpg
-  });
-
-
-</script>						</div>
-					</div>
-
-					<div class="col-12 col-md-7 col-lg-8 py-5 ourchars rounded">
-						<div class="">
-							<h2 class="text-center sp-tx-shadow">আমাদের প্লাটফর্মের বৈশিষ্ট:</h2>
-						</div>
-						<div class="row no-gutters row-eq-height">
-							<div class="col-6 py-3 d-flex align-items-stretch">
-								<div class="card element wh-tr-bg" data-emergence="hidden">
-									<div class="card-body">
-										<h4 class=""><span>সহজ ও উন্মুক্ত এক্সেস </span></h4>
-										<div class="">
-											<p>বাংলাদেশের যে কোন প্রান্তের যে কোনো ব্যক্তি বা প্রতিষ্ঠান ইন্টারনেট
-												সম্বলিত যেকোনো ডিভাইস দিয়ে আমাদের প্লাটফর্মে ফ্রি নিবন্ধন করে এক্সেস
-												করতে পারবেন।</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-6 py-3 d-flex align-items-stretch">
-								<div data="https://hscict.org/assets/imgs/homeimg_1.webp"
-									class="bgimg elementrig rounded-right" data-emergence="hidden"></div>
-							</div>
-							<div class="col-6 py-3 d-flex align-items-stretch">
-								<div data="https://hscict.org/assets/imgs/homeimg_2.webp"
-									class="bgimg element rounded-left" data-emergence="hidden"></div>
-							</div>
-							<div class="col-6 py-3 d-flex align-items-stretch">
-								<div class="card elementrig wh-tr-bg" data-emergence="hidden">
-									<div class="card-body">
-										<h4 class=""><span>সরকার প্রণীত পাঠ্যপুস্তক ভিত্তিক</span></h4>
-										<div class="">
-											<p>২০২০ সালে সরকার এইচএসসি লেভেলের আইসিটি শিক্ষার্থীদের জন্য যে পাঠ্যপুস্তক
-												প্রণয়ন করেছে, আমাদের সিস্টেম তার উপর ভিত্তি করে তৈরী করা হয়েছে।</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-6 py-3 d-flex align-items-stretch">
-								<div class="card element wh-tr-bg" data-emergence="hidden">
-									<div class="card-body">
-										<h4 class=""><span>ল্যাবের বিকল্প</span></h4>
-										<div class="">
-											<p>প্র্যক্টিক্যাল আইসিটি করার জন্য ল্যাবে বসার প্রয়োজন নেই। শিক্ষার্থীরা যে
-												কোনো মোবাইল থেকেই প্র্যক্টিক্যাল করতে পারবেন।</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-6 py-3 d-flex align-items-stretch">
-								<div data="https://hscict.org/assets/imgs/homeimg_3.webp"
-									class="bgimg elementrig rounded-right" data-emergence="hidden"></div>
-							</div>
-							<div class="col-6 py-3 d-flex align-items-stretch">
-								<div data="https://hscict.org/assets/imgs/homeimg_4.webp"
-									class="bgimg element rounded-left" data-emergence="hidden"></div>
-							</div>
-							<div class="col-6 py-3 d-flex align-items-stretch">
-								<div class="card elementrig wh-tr-bg" data-emergence="hidden">
-									<div class="card-body">
-										<h4 class=""><span>ভার্চুয়াল ক্লাসরুম</span></h4>
-										<div class="">
-											<p>আমাদের প্লাটফর্মের শিক্ষক-ছাত্র মডিউলের মধ্যমে টিচার ছাত্রদের পরীক্ষা
-												নেয়া, কোডিং অ্যাসাইনমেন্ট দেয়া-নেয়া লাইভ চ্যাট করতে পারবেন</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-6 py-3 d-flex align-items-stretch">
-								<div class="card element wh-tr-bg" data-emergence="hidden">
-									<div class="card-body">
-										<h4 class=""><span>লাইভ কোডিং</span></h4>
-										<div class="">
-											<p>HTML C ও SQLite কোড লিখার সাথে সাথে ফলাফল।</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-6 py-3 d-flex align-items-stretch">
-								<div data="https://hscict.org/assets/imgs/homeimg_5.webp"
-									class="bgimg elementrig rounded-right" data-emergence="hidden"></div>
-							</div>
-						</div>
-					</div> -->
-
-
-
-                                <div class="col-12 py-5">
-                                    <div class="row subject-row justify-content-center">
-                                        <div class="col-12">
-                                            <div class="py-5">
-                                                <h1 class="cushead m-auto text-center sp-tx-shadow border-bottom border-4"
-                                                    id="bookitems">তথ্য ও যোগাযোগ প্রযুক্তি অধ্যায়সমূহ</h1>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                                            <a class="btn btn-outline-secondary p-0 my-3 border-0 w-100"
-                                                href="https://hscict.org/welcome/allbook/nctb_chapter1">
-                                                <div class="card px-2 py-3 d-flex align-items-stretch wh-tr-bg">
-                                                    <div class="">
-                                                        <div class="bgimg"
-                                                            data="https://hscict.org/assets/imgs/ch1.webp"
-                                                            style="height: 150px; width: 150px;"></div>
-                                                    </div>
-                                                    <div class="mt-3">
-                                                        <h4>প্রথম অধ্যায়</h4>
-                                                    </div>
-                                                    <div class="" style="min-height: 125px;">
-                                                        তথ্য ও যোগাযোগ প্রযুক্তি : বিশ্ব ও বাংলাদেশ প্রেক্ষিত<br>ICT:
-                                                        World and
-                                                        Bangladesh Perspective
-                                                    </div>
-                                                    <div class="card-foooter"></div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                                            <a class="btn btn-outline-secondary p-0 my-3 border-0 w-100"
-                                                href="https://hscict.org/welcome/allbook/nctb_chapter2">
-                                                <div class="card px-2 py-3 d-flex align-items-stretch wh-tr-bg">
-                                                    <div class="">
-                                                        <div class="bgimg"
-                                                            data="https://hscict.org/assets/imgs/ch2.webp"
-                                                            style="height: 150px; width: 150px;"></div>
-                                                    </div>
-                                                    <div class="mt-3">
-                                                        <h4>দ্বিতীয় অধ্যায়</h4>
-                                                    </div>
-                                                    <div class="" style="min-height: 125px;">
-                                                        কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং<br>Communicaton Systems and
-                                                        Networking
-                                                    </div>
-                                                    <div class="card-foooter"></div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                                            <a class="btn btn-outline-secondary p-0 my-3 border-0 w-100"
-                                                href="https://hscict.org/welcome/allbook/nctb_chapter3">
-                                                <div class="card px-2 py-3 d-flex align-items-stretch wh-tr-bg">
-                                                    <div class="">
-                                                        <div class="bgimg"
-                                                            data="https://hscict.org/assets/imgs/ch3.webp"
-                                                            style="height: 150px; width: 150px;"></div>
-                                                    </div>
-                                                    <div class="mt-3">
-                                                        <h4>তৃতীয় অধ্যায়</h4>
-                                                    </div>
-                                                    <div class="" style="min-height: 125px;">
-                                                        সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস<br>Number Systems and Digital
-                                                        Devices
-                                                    </div>
-                                                    <div class="card-foooter"></div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                                            <a class="btn btn-outline-secondary p-0 my-3 border-0 w-100"
-                                                href="https://hscict.org/welcome/allbook/nctb_chapter4">
-                                                <div class="card px-2 py-3 d-flex align-items-stretch wh-tr-bg">
-                                                    <div class="">
-                                                        <div class="bgimg"
-                                                            data="https://hscict.org/assets/imgs/html.png"
-                                                            style="height: 150px; width: 150px;"></div>
-                                                    </div>
-                                                    <div class="mt-3">
-                                                        <h4>চতুর্থ অধ্যায়</h4>
-                                                    </div>
-                                                    <div class="" style="min-height: 125px;">
-                                                        ওয়েব ডিজাইন পরিচিতি এবং এইটিএমএল<br>Introduction to Web Design
-                                                        and HTML
-                                                    </div>
-                                                    <div class="card-foooter"></div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                                            <a class="btn btn-outline-secondary p-0 my-3 border-0 w-100"
-                                                href="https://hscict.org/welcome/allbook/nctb_chapter5">
-                                                <div class="card px-2 py-3 d-flex align-items-stretch wh-tr-bg">
-                                                    <div class="">
-                                                        <div class="bgimg" data="https://hscict.org/assets/imgs/ch5.png"
-                                                            style="height: 150px; width: 150px;"></div>
-                                                    </div>
-                                                    <div class="mt-3">
-                                                        <h4>পঞ্চম অধ্যায়</h4>
-                                                    </div>
-                                                    <div class="" style="min-height: 125px;">
-                                                        প্রোগ্রামিং ভাষা<br>Programming Language
-                                                    </div>
-                                                    <div class="card-foooter"></div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
-                                            <a class="btn btn-outline-secondary p-0 my-3 border-0 w-100"
-                                                href="https://hscict.org/welcome/allbook/nctb_chapter6">
-                                                <div class="card px-2 py-3 d-flex align-items-stretch wh-tr-bg">
-                                                    <div class="">
-                                                        <div class="bgimg" data="https://hscict.org/assets/imgs/sql.png"
-                                                            style="height: 150px; width: 150px;"></div>
-                                                    </div>
-                                                    <div class="mt-3">
-                                                        <h4>ষষ্ঠ অধ্যায়</h4>
-                                                    </div>
-                                                    <div class="" style="min-height: 125px;">
-                                                        ডেটাবেজ ম্যানেজমেন্ট সিস্টেম<br>Database Managemant System
-                                                    </div>
-                                                    <div class="card-foooter"></div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-12 onlines g-0">
-                        <div class="container">
-                            <div class="row">
-
-                                <div class="col-12 col-md-6 g-0 text-center "
-                                    style="background:url('https://hscict.org/assets/imgs/online.jpg')  no-repeat 50% 50%; min-height: 400px;background-size: cover;">
-                                </div>
-                                <div class="col-12 col-md-6 my-5 py-5">
-                                    <h1 class="cushead m-auto text-center sp-tx-shadow border-bottom border-4">শেখা হোক
-                                        ঘরে বসেই</h1>
-                                    <h3>HSC ICT Online এর মাধ্যমে ঘরে বসে ICT শেখার জন্য শিক্ষার্থীর জন্য রয়েছে-</h3>
-                                    <div>
-                                        <ul>
-                                            <li>শিক্ষার্থী ড্যাশবোর্ড</li>
-                                            <li>প্রগ্রেস মনিটরিং</li>
-                                            <li>অধ্যায়ভিত্তিক অনুশীলন</li>
-                                            <li>শিক্ষার্থী র‍্যাঙ্কিং</li>
-                                        </ul>
-                                        সহ আরো অনেক মজার ফিচার্স …
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-12 g-0 studybloc">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-6 my-5 py-5 order-2 order-md-1">
-                                    <h1 class="cushead m-auto text-center sp-tx-shadow border-bottom border-4">শেখানো
-                                        এবং মূল্যায়ন হোক ডিজিটাল মাধ্যমে</h1>
-                                    <h3>HSC ICT Online এর মাধ্যমে যেকোনো জায়গা থেকে ICT শেখানো ও মূল্যায়নের জন্য
-                                        শিক্ষকের জন্য রয়েছে-</h3>
-                                    <div>
-                                        <ul>
-                                            <li>শিক্ষক ড্যাশবোর্ড</li>
-                                            <li>গ্রুপ বা ব্যাচ ভিত্তিক মনিটরিং</li>
-                                            <li>অ্যাসাইনমেন্ট প্রদান ও মূল্যায়ন</li>
-                                            <li>শিক্ষার্থী রিপোর্ট</li>
-                                        </ul>
-                                        সহ আরো অনেক ফিচার্স …
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 text-center order-1 order-md-2"
-                                    style="background:url('https://hscict.org/assets/imgs/study.jpg')  no-repeat 50% 50%; min-height: 400px;background-size: cover;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="col-12 commnents">
-			<div>
-				<div class="mt-5 pt-5">
-					<h1 class="cushead m-auto text-center sp-tx-shadow border-bottom border-4">কিছু প্রতিক্রিয়া</h1>
-
-					<div class="mx-auto p-5" style="max-width: 800px;">
-						<div class="slider-nav m-auto">
-							
-<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
-
-<h4>A PHP Error was encountered</h4>
-
-<p>Severity: Warning</p>
-<p>Message:  Undefined variable $come</p>
-<p>Filename: views/welcome_page.php</p>
-<p>Line Number: 468</p>
-
-
-	<p>Backtrace:</p>
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/welcome_page.php<br />
-			Line: 468<br />
-			Function: _error_handler			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/layout/master.php<br />
-			Line: 88<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/controllers/Welcome.php<br />
-			Line: 22<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/index.php<br />
-			Line: 315<br />
-			Function: require_once			</p>
-
-		
-	
-
-</div>
-<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
-
-<h4>A PHP Error was encountered</h4>
-
-<p>Severity: Warning</p>
-<p>Message:  foreach() argument must be of type array|object, null given</p>
-<p>Filename: views/welcome_page.php</p>
-<p>Line Number: 468</p>
-
-
-	<p>Backtrace:</p>
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/welcome_page.php<br />
-			Line: 468<br />
-			Function: _error_handler			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/layout/master.php<br />
-			Line: 88<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/controllers/Welcome.php<br />
-			Line: 22<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/index.php<br />
-			Line: 315<br />
-			Function: require_once			</p>
-
-		
-	
-
-</div>						</div>
-						<div class="slider-for mx-auto">
-							
-<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
-
-<h4>A PHP Error was encountered</h4>
-
-<p>Severity: Warning</p>
-<p>Message:  Undefined variable $come</p>
-<p>Filename: views/welcome_page.php</p>
-<p>Line Number: 481</p>
-
-
-	<p>Backtrace:</p>
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/welcome_page.php<br />
-			Line: 481<br />
-			Function: _error_handler			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/layout/master.php<br />
-			Line: 88<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/controllers/Welcome.php<br />
-			Line: 22<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/index.php<br />
-			Line: 315<br />
-			Function: require_once			</p>
-
-		
-	
-
-</div>
-<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
-
-<h4>A PHP Error was encountered</h4>
-
-<p>Severity: Warning</p>
-<p>Message:  foreach() argument must be of type array|object, null given</p>
-<p>Filename: views/welcome_page.php</p>
-<p>Line Number: 481</p>
-
-
-	<p>Backtrace:</p>
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/welcome_page.php<br />
-			Line: 481<br />
-			Function: _error_handler			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/layout/master.php<br />
-			Line: 88<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/controllers/Welcome.php<br />
-			Line: 22<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/index.php<br />
-			Line: 315<br />
-			Function: require_once			</p>
-
-		
-	
-
-</div>						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
-
-                    <!-- <div class="col-12 instructor">
-			<div class="container">
-				<div class="my-5 py-5 bg-danger-subtle">
-					<h1 class="cushead m-auto text-center sp-tx-shadow border-bottom border-4">আমাদের মেধাবী ইন্সট্রাক্টর টীম</h1>
-					<div class="multiple-items">
-						
-<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
-
-<h4>A PHP Error was encountered</h4>
-
-<p>Severity: Warning</p>
-<p>Message:  Undefined variable $inst</p>
-<p>Filename: views/welcome_page.php</p>
-<p>Line Number: 496</p>
-
-
-	<p>Backtrace:</p>
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/welcome_page.php<br />
-			Line: 496<br />
-			Function: _error_handler			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/layout/master.php<br />
-			Line: 88<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/controllers/Welcome.php<br />
-			Line: 22<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/index.php<br />
-			Line: 315<br />
-			Function: require_once			</p>
-
-		
-	
-
-</div>
-<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
-
-<h4>A PHP Error was encountered</h4>
-
-<p>Severity: Warning</p>
-<p>Message:  foreach() argument must be of type array|object, null given</p>
-<p>Filename: views/welcome_page.php</p>
-<p>Line Number: 496</p>
-
-
-	<p>Backtrace:</p>
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/welcome_page.php<br />
-			Line: 496<br />
-			Function: _error_handler			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/views/layout/master.php<br />
-			Line: 88<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/application/controllers/Welcome.php<br />
-			Line: 22<br />
-			Function: view			</p>
-
-		
-	
-		
-	
-		
-			<p style="margin-left:10px">
-			File: /var/www/html/hscict/index.php<br />
-			Line: 315<br />
-			Function: require_once			</p>
-
-		
-	
-
-</div>					</div>
-				</div>
-			</div>
-		</div> -->
-
-
-                    <div class="col-12 mobileapp">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-6 g-0 py-5 text-center">
-                                    <img src="https://hscict.org/assets/imgs/mobile.png" class="img-fluid m-auto"
-                                        style="max-height: 600px;" alt="">
-                                </div>
-                                <div class="col-12 col-md-6 my-5 py-5">
-                                    <h1 class="cushead m-auto text-center sp-tx-shadow border-bottom border-4">মোবাইলেও
-                                        শেখা হবে যেখানে সেখানে</h1>
-                                    <h3>APK ডাউনলোড করতে ক্লিক করো নিচের বাটনে!</h3>
-                                    <div class="mb-3">*আমাদের এই অ্যাপটি গুগল প্লে-স্টোরে আপলোড না করায় ইন্সটল করবার সময়
-                                        ফোনে সতর্কবাণী দেখাতে পারে। এতে চিন্তার কিছু নেই, নিশ্চিন্তে আমাদের অ্যাপ ইন্সটল
-                                        করতে পার।</div>
-                                    <div class="btn btn-light btn-sm shadow" data-bs-toggle="modal"
-                                        data-bs-target="#android_app">
-                                        <div data="https://hscict.org/assets/imgs/androidicon.webp" style="width: 130px"
-                                            class="bgimg"></div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="android_app">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header bg-info">
-                                <h5 class="modal-title" id="exampleModalLabel">এইচএসসি আইসিটি অনলাইন মোবাইল
-                                    অ্যাপ</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true"></span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div>আমাদের এপিকেটি গুগল প্লে স্টোরে না হওয়ার কারণে একটি সতর্কবাণী দেখাতে পারে।
-                                    তবে এটি চিন্তার কোন কারন নয়, আপনি নিশ্চিন্তে আমাদের অ্যাপ ইন্সটল করতে
-                                    পারেন।</div>
-                                <div class="my-3">আমাদের এপিকে ডাউনলোড করতে নিচের বাটনে ক্লিক করুন</div>
-                                <div class="text-center"><a class="btn btn-primary" href="#">Download</a></div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                    aria-label="Close">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <link rel="stylesheet" type="text/css"
-                    href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-                <script type="text/javascript"
-                    src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-                <!-- <img src="https://hscict.org/assets/img/prel.gif" class="preloader" ng-show='false'> -->
-                <button id="backtotop" class="btn btn-info btn-lg float-end" title="Go to top">&#9650;</button>
-                <hr class="clear">
-                <div class="footer">
-                    <div class="container m-auto py-5">
-                        <div class="row">
-                            <div class="col-12 col-md-6 col-lg-4 text-center text-md-start">
-                                <a href="https://hscict.org/" class="w-75">
-                                    <img class="img-fluid w-50" src="https://hscict.org/assets/img/logo.png" alt="">
-                                </a>
-                                <div class="">যুক্ত থাকুন আমাদের সাথে...</div>
-                                <div class="d-flex social justify-content-center">
-                                    <a href="#" class="btn btn-blank"><img class="img-fluid"
-                                            src="https://hscict.org/assets/imgs/facebook.png" alt="facebook"></a>
-                                    <a href="#"><img class="img-fluid" src="https://hscict.org/assets/imgs/youtube.png"
-                                            alt="youtube"></a>
-                                    <a href="#" class="btn btn-blank"><img class="img-fluid"
-                                            src="https://hscict.org/assets/imgs/linkedin.png" alt="linkin"></a>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="text-center text-md-start">
-                                    <div class=""><a class="btn btn-link" href="#">আমাদের
-                                            সম্পর্কে</a></div>
-                                    <div class=""><a class="btn btn-link" href="#">আমাদের
-                                            টিম</a></div>
-                                    <div class=""><a class="btn btn-link" href="#">যোগাযোগ করুন</a></div>
-                                    <div class=""><a class="btn btn-link" href="#">ভার্চুয়াল
-                                            ইন্টার্নশিপ সিস্টেম</a></div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 text-center text-md-start">
-                                <div>যোগাযোগ<br>
-                                    <ion-icon name="mail-outline"></ion-icon> hscictdotorg@gmail.com
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <hr class="w-75 mx-auto" style="border: 2px solid black;">
-                            </div>
-                            <div class="col-12 col-md-3 text-center"><a href="https://esrdlab.org/"><img
-                                        class="img-fluid" width="200px" src="https://hscict.org/assets/imgs/esrd.png"
-                                        alt="logo" /></a></div>
-                            <div class="col-12 col-md-6">
-                                <div class=" text-center" class="p-3">
-                                    Research project by Dr. Abu Sayed Md. Latiful Hoque, Professor, CSE, BUET. <div
-                                        class="text-center py-1">Maintained by <a href="http://3dotsss.com">3dots
-                                            Service Systems</a></div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-3 text-center"><a href="http://3dotsss.com"><img class="img-fluid"
-                                        width="80px" src="https://hscict.org/assets/imgs/3dots.png" alt="logo" /></a>
-                            </div>
-                            <div class="col-12 text-center">Copyright&#169; 2022 BANGLADESH UNIVERSITY OF ENGINEERING
-                                AND TECHNOLOGY (BUET). All Rights Reserved</div>
-                        </div>
-
-                        <!-- <div class="row justify-content-center" style="">
-      <div class="col-12 text-center p-3">
-        <div>
-<div class="d-inline"><img width="100px" height='33px' style="width: 100px;box-shadow: 1px 1px 10px #00000063; border-radius: 5px;" src="https://hscict.org/assets/imgs/esrd.png" alt="logo"></div>
-<div class="d-inline" class="p-3">
-  Research project by Dr. Abu Sayed Md. Latiful Hoque, Professor, CSE, BUET.
-</div>
-        </div>
-      </div>
-    </div> -->
-                        <!-- <div class="copyright text-center">
-      <div class="row">
-        <div class="col-12 col-md-6">
-
-          <ul class="nav" style="float: right;">
-            <li class="nav-item">
-              <a class="nav-link" style="padding:0.1rem 1rem" href="https://hscict.org/welcome/about">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" style="padding:0.1rem 1rem" href="https://hscict.org/welcome/team">Team</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" style="padding:0.1rem 1rem" href="https://hscict.org/welcome/intouch">Contact Us</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-12 col-md-6">
-          <div class="text-start py-1">Maintained by <a href="http://3dotsss.com">3dots Service Systems</a></div>
-        </div>
-
-        <div class="col-12">
-          <hr class="m-0">
-          <div class="elementor-widget-container">
-            <span class="elementor-heading-title elementor-size-default">কপিরাইট &copy; <span>
-              <a href="https://hscict.org">hscict.org</a></span> এই সাইটের সকল তথ্য HSC ICT Online-এর জন্য সংরক্ষিত।
-            </span>
-          </div>
-        </div>
-      </div>
-
-    </div> -->
-                    </div>
-                </div>
-                <div class="" ng-show="prel_show" ng-init="prel_show=false"
-                    style="position: fixed; width: 150px; z-index: 1000; left: calc(50vw - 75px); top: calc(50vh - 75px); background: #FFF7; padding: 60px; border-radius: 10px; box-shadow: 0 0 10px #0003; backdrop-filter: blur(3px);">
-                    <img src="https://hscict.org/assets/img/pre.gif" alt="" style="width: 30px;">
-                </div>
-        </section>
+<body>
+    <h1>HSC এর Complete Preparation পেয়ে যাও এক প্ল্যাটফর্মেই</h1>
+    <h3>HSC 25 পরীক্ষার প্রস্তুতির জন্য Model Test প্রোগ্রামে অংশ নাও সম্পূর্ণ বিনামূল্যে। অফারটি নিতে রেজিস্ট্রেশন করো
+        এখনই। </h3>
+
+    <!-- Registration Form -->
+    <div class="form-container">
+        <h2>রেজিস্ট্রেশন ফর্ম</h2>
+        <form action="#" method="POST" name="HSC-ICT-Card-Registration">
+            <input type="text" name="student-name" placeholder="শিক্ষার্থীর নাম" required>
+            <input type="text" name="institution-name" placeholder="শিক্ষা প্রতিষ্ঠানের নাম" required>
+            <select name="department" required>
+                <option value="" disabled selected>তোমার বিভাগ</option>
+                <option value="science">বিজ্ঞান</option>
+                <option value="business">ব্যবসায় শিক্ষা</option>
+                <option value="humanities">মানবিক</option>
+            </select>
+            <input type="tel" name="phone-number" placeholder="ফোন নাম্বার" required>
+            <button type="submit">সাবমিট</button>
+        </form>
     </div>
 
-
-    <!-- <link rel="stylesheet" href="https://hscict.org/assets/csslib/bootstrap.min.css"></link> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
-    <!-- <script type="text/javascript" src="https://hscict.org/assets/jslib/bootstrap.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-        crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="https://hscict.org/assets/js/navbar.js" />
-    </script>
-    <link rel="stylesheet" href="https://hscict.org/assets/css/style.min.css">
-    </link>
-    <!-- <link rel="stylesheet" href="https://hscict.org/assets/csslib/animate.min.css"> -->
-    <link rel="stylesheet" href="https://hscict.org/assets/csslib/hover.css">
-    </link>
-    <link rel="stylesheet" type="text/css" href="https://hscict.org/assets/css/design.min.css" />
-    </link>
-
-    <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
-    <link rel="stylesheet" href="https://hscict.org/assets/font/kalpurush/stylesheet.css">
-    </link>
-    <script>
-        $(document).ready(function () {
-
-            $(window).scroll(function () {
-                if ($(window).scrollTop() > 100) {
-                    $('#backtotop').stop().slideDown(400);
-                }
-                else {
-                    $("#backtotop").stop().slideUp(400);
-                }
-            });
-            $("#backtotop").click(function () {
-                var body = $("html, body");
-                body.stop().animate({ scrollTop: 0 }, 500, 'swing', function () { });
-            });
-        });
-
-    </script>
-    <script type="text/javascript" src="https://hscict.org/assets/js/tracker.js"></script>
-    <script type="text/javascript" src="https://hscict.org/assets/jslib/loader.js"></script>
-    <script type="text/javascript">
-        window.onload = function () { }
-    </script>
-    <script type="text/javascript" src="https://hscict.org/assets/js/custom.js"></script>
-    <div class="anitxt" ng-show="showText && instpoint>0" ng-bind="instpoint*1000 | number: 0"></div>
 </body>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwvNcWc-fA88r3so4V3loyr8wZVnDHpzG2LoVW_abxHI8i57-5ph0OpKLZghk7r6NqSUw/exec'
+
+    const form = document.forms['HSC-ICT-Card-Registration']
+
+    form.addEventListener('submit', e => {
+
+        e.preventDefault()
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => alert("Thank you! Form is submitted"))
+            .then(() => { window.location.reload(); })
+            .catch(error => console.error('Error!', error.message))
+    })
+</script>
 
 </html>

@@ -1,84 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="60">
-    <title>HSC Exam</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="refresh" content="60" /> -->
+    <title>HSC Digital Exam</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet" />
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'SolaimanLipi', Arial, sans-serif;
+            font-family: 'Hind Siliguri', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f4f7;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: auto;
             padding: 20px;
         }
 
+        .question,
         .upload-section {
-            margin-top: 30px;
-            border-top: 2px solid #ccc;
-            padding-top: 20px;
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .question h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #007bff;
+        }
+
+        .upload-section h3 {
+            color: #28a745;
         }
 
         input[type="file"] {
-            margin-bottom: 10px;
-        }
-
-        .preview-img {
-            margin-top: 10px;
-            max-width: 200px;
-            height: auto;
-            margin-right: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
 
         .preview-container {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .preview-img {
+            max-width: 180px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .timer-bar {
+            background-color: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #28a745;
+            width: 0%;
+            transition: width 1s linear;
+        }
+
+        .countdown-text {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #dc3545;
+        }
+
+        @media (max-width: 600px) {
+            .preview-img {
+                max-width: 100%;
+            }
+
+            .question h4 {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <header>
+        <h2>✍️ এইচএসসি সৃজনশীল ডিজিটাল পরীক্ষা</h2>
+    </header>
 
-    <h4>সৃজনশীল প্রশ্ন ১ ► <span style="font-weight: 400;">চঞ্চলা, চামেলি ও চম্পা ৩ বন্ধু বাজারে গিয়ে ‘X’
-            (110110)<sub>2</sub>, ‘Y’ (36)<sub>8</sub> এবং
-            ‘Z’ (A9)<sub>16</sub> টাকার বই কিনলো।</span><br>
-        <span style="font-weight: 400;">ক। কোড কী?<br>
-            খ। ২ এর পরিপূরক গঠনের প্রধান কারনটি বর্ননা কর।<br>
-            গ। উদ্দীপকের 'X' এর ক্রয়কৃত বইয়ের মূল্য ডেসিমেল পদ্ধতিতে নির্নয় কর।<br>
-            ঘ। উদ্দীপকের 'Y' ও 'Z' এর কেনা বইয়ের মোট মূল্য বাইনারি পদ্ধতিতে নির্নয় কর।</span>
-    </h4>
+    <div class="container">
+        <div class="countdown-text">⏰ বাকি সময়: <span id="time">--:--</span></div>
+        <div class="timer-bar">
+            <div class="progress" id="progressBar"></div>
+        </div>
 
-    <h4>সৃজনশীল প্রশ্ন ২ ► ‍<span style="font-weight: 400;"> সুমি, সুমির বাবা ও মায়ের বয়স যথাক্রমে (10)<sub>16</sub>
-            ;(100)<sub>8</sub> এবং
-            (2F)<sub>16</sub> বছর।</span><br>
+        <div class="question">
+            <h4>সৃজনশীল প্রশ্ন ১ ►</h4>
+            <span>চঞ্চলা, চামেলি ও চম্পা ৩ বন্ধু বাজারে গিয়ে ‘X’ (110110)<sub>2</sub>, ‘Y’ (36)<sub>8</sub> এবং ‘Z’
+                (A9)<sub>16</sub> টাকার বই কিনলো।<br><br>
+                ক। কোড কী?<br>
+                খ। ২ এর পরিপূরক গঠনের প্রধান কারনটি বর্ননা কর।<br>
+                গ। উদ্দীপকের 'X' এর ক্রয়কৃত বইয়ের মূল্য ডেসিমেল পদ্ধতিতে নির্নয় কর।<br>
+                ঘ। উদ্দীপকের 'Y' ও 'Z' এর কেনা বইয়ের মোট মূল্য বাইনারি পদ্ধতিতে নির্নয় কর।
+            </span>
+        </div>
 
-        <span style="font-weight: 400;">ক. বিসিডি কোড কী?<br>
-            খ. ২'র পরিপূরক করলে সংখ্যার শুধুমাত্র চিহ্নের পরিবর্তন হয়- বুঝিয়ে লেখ।<br>
-            গ. সুমির মায়ের বয়স অক্টাল সংখ্যায় রূপান্তর কর।<br>
-            ঘ. সুমির বাবার বয়স সুমির বয়সের কত গুণ? বিশ্লেষণ কর।</span>
-    </h4>
+        <div class="question">
+            <h4>সৃজনশীল প্রশ্ন ২ ►</h4>
+            <span>সুমি, সুমির বাবা ও মায়ের বয়স যথাক্রমে (10)<sub>16</sub>, (100)<sub>8</sub> এবং (2F)<sub>16</sub>
+                বছর।<br><br>
+                ক. বিসিডি কোড কী?<br>
+                খ. ২'র পরিপূরক করলে সংখ্যার শুধুমাত্র চিহ্নের পরিবর্তন হয়- বুঝিয়ে লেখ।<br>
+                গ. সুমির মায়ের বয়স অক্টাল সংখ্যায় রূপান্তর কর।<br>
+                ঘ. সুমির বাবার বয়স সুমির বয়সের কত গুণ? বিশ্লেষণ কর।
+            </span>
+        </div>
 
-    <div class="upload-section">
-        <h3>📤 খাতায় লেখা উত্তর এক বা একাধিক ছবির মাধ্যমে জমা দাও:</h3>
-        <form action="/submit" method="post" enctype="multipart/form-data">
-            <label for="imageUpload">ছবি আপলোড করো:</label><br>
-            <input type="file" id="imageUpload" name="answerImages[]" accept="image/*" multiple required><br>
-            <div id="previewContainer" class="preview-container"></div>
-            <br>
-            <button type="submit">✅ সাবমিট করো</button>
-        </form>
+        <div class="upload-section">
+            <h3>📸 খাতায় লেখা উত্তর (একাধিক ছবি) আপলোড করো:</h3>
+            <form id="examForm">
+                <input type="file" id="imageUpload" name="answerImages[]" accept="image/*" multiple required />
+                <div id="previewContainer" class="preview-container"></div>
+                <button type="submit">✅ উত্তর সাবমিট করো</button>
+            </form>
+        </div>
     </div>
 
     <script>
-        const imageUpload = document.getElementById('imageUpload');
-        const previewContainer = document.getElementById('previewContainer');
+        // --------- Image Preview ---------
+        const imageUpload = document.getElementById("imageUpload");
+        const previewContainer = document.getElementById("previewContainer");
 
-        imageUpload.addEventListener('change', function () {
-            previewContainer.innerHTML = ""; // Clear previous
+        imageUpload.addEventListener("change", function () {
+            previewContainer.innerHTML = "";
             const files = this.files;
-            Array.from(files).forEach(file => {
+            Array.from(files).forEach((file) => {
                 const reader = new FileReader();
                 reader.onload = function (e) {
                     const img = document.createElement("img");
@@ -89,8 +185,40 @@
                 reader.readAsDataURL(file);
             });
         });
-    </script>
 
+        // --------- Timer ---------
+        let totalTime = 30 * 60; // in seconds (30 minutes)
+        const display = document.getElementById("time");
+        const progress = document.getElementById("progressBar");
+
+        function startTimer(duration) {
+            let timer = duration, minutes, seconds;
+            const interval = setInterval(() => {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                display.textContent =
+                    String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+                progress.style.width = ((1 - timer / duration) * 100) + "%";
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    alert("সময় শেষ! এখনই উত্তর সাবমিট করুন!");
+                }
+            }, 1000);
+        }
+
+        startTimer(totalTime);
+
+        // --------- Submit Redirect ---------
+        const examForm = document.getElementById("examForm");
+        examForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("✅ উত্তর সফলভাবে গ্রহণ করা হয়েছে! ধন্যবাদ!");
+            setTimeout(() => {
+                window.location.href = "thankyou.html"; // চাইলে অন্য URL ব্যবহার করতে পারো
+            }, 5000);
+        });
+    </script>
 </body>
 
 </html>

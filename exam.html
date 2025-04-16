@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <meta http-equiv="refresh" content="60" /> -->
     <title>HSC Digital Exam</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet" />
-
     <style>
         * {
             box-sizing: border-box;
@@ -23,10 +21,11 @@
         }
 
         header {
-            background-color: #007bff;
+            background: #007bff;
             color: white;
             padding: 20px;
             text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .container {
@@ -35,23 +34,47 @@
             padding: 20px;
         }
 
+        .student-info,
         .question,
-        .upload-section {
-            background-color: white;
+        .upload-section,
+        .mcq-section {
+            background: white;
             padding: 20px;
-            margin-bottom: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            margin-bottom: 30px;
         }
 
-        .question h4 {
-            margin-bottom: 10px;
-            font-size: 18px;
+        .student-info h3,
+        .upload-section h3,
+        .mcq-section h3 {
+            margin-bottom: 15px;
             color: #007bff;
         }
 
-        .upload-section h3 {
-            color: #28a745;
+        .student-info label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .student-info input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .question h4,
+        .mcq-section h4 {
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #007bff;
+        }
+
+        .question p,
+        .mcq-section p {
+            margin: 10px 0;
         }
 
         input[type="file"] {
@@ -76,7 +99,7 @@
         }
 
         button {
-            background-color: #28a745;
+            background: #28a745;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -86,11 +109,11 @@
         }
 
         button:hover {
-            background-color: #218838;
+            background: #218838;
         }
 
         .timer-bar {
-            background-color: #e9ecef;
+            background: #e9ecef;
             border-radius: 10px;
             height: 20px;
             overflow: hidden;
@@ -99,7 +122,7 @@
 
         .progress {
             height: 100%;
-            background-color: #28a745;
+            background: #28a745;
             width: 0%;
             transition: width 1s linear;
         }
@@ -109,9 +132,24 @@
             font-weight: bold;
             margin-bottom: 10px;
             color: #dc3545;
+            text-align: center;
+            display: none;
         }
 
-        @media (max-width: 600px) {
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .mcq-option {
+            margin: 6px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width:600px) {
             .preview-img {
                 max-width: 100%;
             }
@@ -129,54 +167,91 @@
     </header>
 
     <div class="container">
-        <div class="countdown-text">⏰ বাকি সময়: <span id="time">--:--</span></div>
-        <div class="timer-bar">
-            <div class="progress" id="progressBar"></div>
-        </div>
+        <form id="examForm">
+            <div class="student-info">
+                <h3>🎓 শিক্ষার্থী তথ্য</h3>
+                <label>নাম:
+                    <input type="text" name="studentName" placeholder="পুরো নাম লিখুন" required />
+                </label>
+                <label>রোল নম্বর:
+                    <input type="text" name="studentRoll" placeholder="রোল নম্বর" required />
+                </label>
+                <label>শ্রেণী:
+                    <input type="text" name="studentClass" placeholder="উদাহরণ: ১২" required />
+                </label>
+                <label>প্রতিষ্ঠান:
+                    <input type="text" name="studentInstitute" placeholder="শিক্ষা প্রতিষ্ঠানের নাম" required />
+                </label>
+                <button type="button" id="startExam">🟢 পরীক্ষা শুরু করো</button>
+            </div>
 
-        <div class="question">
-            <h4>সৃজনশীল প্রশ্ন ১ ►</h4>
-            <span>চঞ্চলা, চামেলি ও চম্পা ৩ বন্ধু বাজারে গিয়ে ‘X’ (110110)<sub>2</sub>, ‘Y’ (36)<sub>8</sub> এবং ‘Z’
-                (A9)<sub>16</sub> টাকার বই কিনলো।<br><br>
-                ক। কোড কী?<br>
-                খ। ২ এর পরিপূরক গঠনের প্রধান কারনটি বর্ননা কর।<br>
-                গ। উদ্দীপকের 'X' এর ক্রয়কৃত বইয়ের মূল্য ডেসিমেল পদ্ধতিতে নির্নয় কর।<br>
-                ঘ। উদ্দীপকের 'Y' ও 'Z' এর কেনা বইয়ের মোট মূল্য বাইনারি পদ্ধতিতে নির্নয় কর।
-            </span>
-        </div>
+            <div id="examSection" class="hidden">
+                <div class="countdown-text">⏰ বাকি সময়: <span id="time">--:--</span></div>
+                <div class="timer-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
 
-        <div class="question">
-            <h4>সৃজনশীল প্রশ্ন ২ ►</h4>
-            <span>সুমি, সুমির বাবা ও মায়ের বয়স যথাক্রমে (10)<sub>16</sub>, (100)<sub>8</sub> এবং (2F)<sub>16</sub>
-                বছর।<br><br>
-                ক. বিসিডি কোড কী?<br>
-                খ. ২'র পরিপূরক করলে সংখ্যার শুধুমাত্র চিহ্নের পরিবর্তন হয়- বুঝিয়ে লেখ।<br>
-                গ. সুমির মায়ের বয়স অক্টাল সংখ্যায় রূপান্তর কর।<br>
-                ঘ. সুমির বাবার বয়স সুমির বয়সের কত গুণ? বিশ্লেষণ কর।
-            </span>
-        </div>
+                <div class="question">
+                    <h4>সৃজনশীল প্রশ্ন ১ ►</h4>
+                    <p>চঞ্চলা, চামেলি ও চম্পা ৩ বন্ধু বাজারে গিয়ে ‘X’ (110110)<sub>2</sub>, ‘Y’ (36)<sub>8</sub> এবং ‘Z’
+                        (A9)<sub>16</sub> টাকার বই কিনলো।</p>
+                    <ul>
+                        <li>ক। কোড কী?</li>
+                        <li>খ। ২ এর পরিপূরক গঠনের প্রধান কারনটি বর্ননা কর।</li>
+                        <li>গ। উদ্দীপকের 'X' এর ক্রয়কৃত বইয়ের মূল্য ডেসিমেল পদ্ধতিতে নির্নয় কর।</li>
+                        <li>ঘ। উদ্দীপকের 'Y' ও 'Z' এর কেনা বইয়ের মোট মূল্য বাইনারি পদ্ধতিতে নির্নয় কর।</li>
+                    </ul>
+                </div>
 
-        <div class="upload-section">
-            <h3>📸 খাতায় লেখা উত্তর (একাধিক ছবি) আপলোড করো:</h3>
-            <form id="examForm">
-                <input type="file" id="imageUpload" name="answerImages[]" accept="image/*" multiple required />
-                <div id="previewContainer" class="preview-container"></div>
-                <button type="submit">✅ উত্তর সাবমিট করো</button>
-            </form>
-        </div>
+                <div class="question">
+                    <h4>সৃজনশীল প্রশ্ন ২ ►</h4>
+                    <p>সুমি, সুমির বাবা ও মায়ের বয়স যথাক্রমে (10)<sub>16</sub>, (100)<sub>8</sub> এবং
+                        (2F)<sub>16</sub> বছর।</p>
+                    <ul>
+                        <li>ক. বিসিডি কোড কী?</li>
+                        <li>খ. ২'র পরিপূরক করলে সংখ্যার শুধুমাত্র চিহ্নের পরিবর্তন হয়- বুঝিয়ে লেখ।</li>
+                        <li>গ. সুমির মায়ের বয়স অক্টাল সংখ্যায় রূপান্তর কর।</li>
+                        <li>ঘ. সুমির বাবার বয়স সুমির বয়সের কত গুণ? বিশ্লেষণ কর।</li>
+                    </ul>
+                </div>
+
+                <div class="mcq-section">
+                    <h3>📝 MCQ প্রশ্ন</h3>
+                    <div>
+                        <h4>১. কোনটি ৮-বিট রেজিস্টার?</h4>
+                        <label class="mcq-option"><input type="radio" name="mcq1" value="a"> MAR</label><br>
+                        <label class="mcq-option"><input type="radio" name="mcq1" value="b"> IR</label><br>
+                        <label class="mcq-option"><input type="radio" name="mcq1" value="c"> Accumulator</label><br>
+                        <label class="mcq-option"><input type="radio" name="mcq1" value="d"> ALU</label>
+                    </div>
+
+                    <div>
+                        <h4>২. নিচের কোনটি ইনপুট ডিভাইস?</h4>
+                        <label class="mcq-option"><input type="radio" name="mcq2" value="a"> মনিটর</label><br>
+                        <label class="mcq-option"><input type="radio" name="mcq2" value="b"> প্রিন্টার</label><br>
+                        <label class="mcq-option"><input type="radio" name="mcq2" value="c"> মাউস</label><br>
+                        <label class="mcq-option"><input type="radio" name="mcq2" value="d"> স্পীকার</label>
+                    </div>
+                </div>
+
+                <div class="upload-section">
+                    <h3>📸 খাতায় লেখা উত্তর (একাধিক ছবি) আপলোড করো:</h3>
+                    <input type="file" id="imageUpload" name="answerImages[]" accept="image/*" multiple required />
+                    <div id="previewContainer" class="preview-container"></div>
+                    <button type="submit">✅ উত্তর সাবমিট করো</button>
+                </div>
+            </div>
+        </form>
     </div>
 
     <script>
-        // --------- Image Preview ---------
         const imageUpload = document.getElementById("imageUpload");
         const previewContainer = document.getElementById("previewContainer");
-
         imageUpload.addEventListener("change", function () {
             previewContainer.innerHTML = "";
-            const files = this.files;
-            Array.from(files).forEach((file) => {
+            Array.from(this.files).forEach(file => {
                 const reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = e => {
                     const img = document.createElement("img");
                     img.src = e.target.result;
                     img.classList.add("preview-img");
@@ -186,37 +261,36 @@
             });
         });
 
-        // --------- Timer ---------
-        let totalTime = 30 * 60; // in seconds (30 minutes)
+        let totalTime = 30 * 60;
         const display = document.getElementById("time");
         const progress = document.getElementById("progressBar");
+        let interval;
 
         function startTimer(duration) {
-            let timer = duration, minutes, seconds;
-            const interval = setInterval(() => {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-                display.textContent =
-                    String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
-                progress.style.width = ((1 - timer / duration) * 100) + "%";
-
+            let timer = duration;
+            interval = setInterval(() => {
+                const minutes = String(parseInt(timer / 60, 10)).padStart(2, '0');
+                const seconds = String(timer % 60).padStart(2, '0');
+                display.textContent = `${minutes}:${seconds}`;
+                progress.style.width = `${(1 - timer / duration) * 100}%`;
                 if (--timer < 0) {
                     clearInterval(interval);
-                    alert("সময় শেষ! এখনই উত্তর সাবমিট করুন!");
+                    alert('সময় শেষ! এখনই উত্তর সাবমিট করুন!');
                 }
             }, 1000);
         }
 
-        startTimer(totalTime);
+        document.getElementById("startExam").addEventListener("click", function () {
+            document.getElementById("examSection").classList.remove("hidden");
+            document.querySelector(".countdown-text").style.display = "block";
+            startTimer(totalTime);
+            this.style.display = "none";
+        });
 
-        // --------- Submit Redirect ---------
-        const examForm = document.getElementById("examForm");
-        examForm.addEventListener("submit", function (e) {
+        document.getElementById("examForm").addEventListener("submit", e => {
             e.preventDefault();
-            alert("✅ উত্তর সফলভাবে গ্রহণ করা হয়েছে! ধন্যবাদ!");
-            setTimeout(() => {
-                window.location.href = "thankyou.html"; // চাইলে অন্য URL ব্যবহার করতে পারো
-            }, 5000);
+            alert('✅ উত্তর সফলভাবে গ্রহণ করা হয়েছে! ধন্যবাদ!');
+            setTimeout(() => window.location.href = 'thankyou.html', 5000);
         });
     </script>
 </body>

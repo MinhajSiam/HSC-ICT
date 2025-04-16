@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="60">
+    <title>HSC Exam</title>
+    <style>
+        body {
+            font-family: 'SolaimanLipi', Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .upload-section {
+            margin-top: 30px;
+            border-top: 2px solid #ccc;
+            padding-top: 20px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        .preview-img {
+            margin-top: 10px;
+            max-width: 200px;
+            height: auto;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h4>সৃজনশীল প্রশ্ন ১ ► <span style="font-weight: 400;">চঞ্চলা, চামেলি ও চম্পা ৩ বন্ধু বাজারে গিয়ে ‘X’
+            (110110)<sub>2</sub>, ‘Y’ (36)<sub>8</sub> এবং
+            ‘Z’ (A9)<sub>16</sub> টাকার বই কিনলো।</span><br>
+        <span style="font-weight: 400;">ক। কোড কী?<br>
+            খ। ২ এর পরিপূরক গঠনের প্রধান কারনটি বর্ননা কর।<br>
+            গ। উদ্দীপকের 'X' এর ক্রয়কৃত বইয়ের মূল্য ডেসিমেল পদ্ধতিতে নির্নয় কর।<br>
+            ঘ। উদ্দীপকের 'Y' ও 'Z' এর কেনা বইয়ের মোট মূল্য বাইনারি পদ্ধতিতে নির্নয় কর।</span>
+    </h4>
+
+    <h4>সৃজনশীল প্রশ্ন ২ ► ‍<span style="font-weight: 400;"> সুমি, সুমির বাবা ও মায়ের বয়স যথাক্রমে (10)<sub>16</sub>
+            ;(100)<sub>8</sub> এবং
+            (2F)<sub>16</sub> বছর।</span><br>
+
+        <span style="font-weight: 400;">ক. বিসিডি কোড কী?<br>
+            খ. ২'র পরিপূরক করলে সংখ্যার শুধুমাত্র চিহ্নের পরিবর্তন হয়- বুঝিয়ে লেখ।<br>
+            গ. সুমির মায়ের বয়স অক্টাল সংখ্যায় রূপান্তর কর।<br>
+            ঘ. সুমির বাবার বয়স সুমির বয়সের কত গুণ? বিশ্লেষণ কর।</span>
+    </h4>
+
+    <div class="upload-section">
+        <h3>📤 খাতায় লেখা উত্তর এক বা একাধিক ছবির মাধ্যমে জমা দাও:</h3>
+        <form action="/submit" method="post" enctype="multipart/form-data">
+            <label for="imageUpload">ছবি আপলোড করো:</label><br>
+            <input type="file" id="imageUpload" name="answerImages[]" accept="image/*" multiple required><br>
+            <div id="previewContainer" class="preview-container"></div>
+            <br>
+            <button type="submit">✅ সাবমিট করো</button>
+        </form>
+    </div>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const previewContainer = document.getElementById('previewContainer');
+
+        imageUpload.addEventListener('change', function () {
+            previewContainer.innerHTML = ""; // Clear previous
+            const files = this.files;
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.classList.add("preview-img");
+                    previewContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

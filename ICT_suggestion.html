@@ -27,20 +27,33 @@
 
 <body class="bg-primary/5 min-h-screen">
     <!-- Header -->
-    <header class="bg-white shadow-md p-6 text-center">
-        <h1 class="text-3xl font-bold text-primary">HSC 2025 ICT সাজেশন</h1>
-        <p class="text-gray-600">পরীক্ষাভিত্তিক অধ্যায় ফিল্টার এবং PDF ডাউনলোড সুবিধা</p>
+    <header class="bg-white shadow-md p-4">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <!-- Logo on the left -->
+            <div class="flex-shrink-0">
+                <img src="https://radianteducation.site/HSC%20ICT.png" alt="Logo" class="h-20 w-auto" />
+            </div>
+
+            <!-- Title + Subtitle Centered -->
+            <div class="text-center flex-1">
+                <h1 class="text-2xl md:text-3xl font-bold text-primary">HSC 2025 ICT সাজেশন</h1>
+                <p class="text-gray-600 text-sm md:text-base">পরীক্ষাভিত্তিক অধ্যায় ফিল্টার এবং PDF ডাউনলোড সুবিধা</p>
+            </div>
+
+            <!-- Invisible spacer to balance layout -->
+            <div class="w-[80px] hidden md:block"></div>
+        </div>
     </header>
 
     <!-- Filter + Download -->
     <div class="max-w-4xl mx-auto mt-6 px-4 flex flex-col md:flex-row justify-between items-center gap-4">
         <select id="chapterFilter" class="w-full md:w-1/2 p-3 rounded-md border border-primary">
-            <option value="all">সকল অধ্যায় দেখাও</option>
-            <option value="chapter1">অধ্যায় ১: তথ্য ও যোগাযোগ প্রযুক্তি</option>
-            <option value="chapter2">অধ্যায় ২: কমিউনিকেশন সিস্টেম</option>
-            <option value="chapter3">অধ্যায় ৩: নম্বর সিস্টেম</option>
-            <option value="chapter4">অধ্যায় ৪: ওয়েব ডিজাইন</option>
-            <option value="chapter5">অধ্যায় ৫: প্রোগ্রামিং</option>
+            <option value="all">সকল অধ্যায়</option>
+            <option value="chapter1">অধ্যায় ১: তথ্য ও যোগাযোগ প্রযুক্তিঃ বিশ্ব ও বাংলাদেশ প্রেক্ষিত</option>
+            <option value="chapter2">অধ্যায় ২: কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং</option>
+            <option value="chapter3">অধ্যায় ৩: সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস</option>
+            <option value="chapter4">অধ্যায় ৪: ওয়েব ডিজাইন পরিচিতি এবং এইচটিএমএর</option>
+            <option value="chapter5">অধ্যায় ৫: প্রোগ্রামিং ভাষা</option>
         </select>
         <!-- Download Button (replace file path as needed) -->
         <a href="/files/ict-suggestion-hsc-2025.pdf" download
@@ -52,7 +65,8 @@
     <!-- Suggestion Content -->
     <main class="max-w-4xl mx-auto p-6 grid gap-6 mt-6" id="suggestionContent">
         <div class="bg-white p-5 rounded-xl shadow" data-chapter="chapter1">
-            <h2 class="text-xl font-bold text-primary">অধ্যায় ১: তথ্য ও যোগাযোগ প্রযুক্তি</h2>
+            <h2 class="text-xl font-bold text-primary">অধ্যায় ১: তথ্য ও যোগাযোগ প্রযুক্তিঃ বিশ্ব ও বাংলাদেশ প্রেক্ষিত
+            </h2>
             <!-- <p class="text-gray-700 mt-2">এই অধ্যায় থেকে তথ্যপ্রযুক্তির সংজ্ঞা, প্রয়োগক্ষেত্র ও ভবিষ্যৎ সম্ভাবনা মুখস্থ
                 করো।</p> -->
             <ul type="disc" class="list-disc pl-5 mt-2 text-gray-700">
@@ -68,7 +82,7 @@
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow" data-chapter="chapter2">
-            <h2 class="text-xl font-bold text-primary">অধ্যায় ২: কমিউনিকেশন সিস্টেম</h2>
+            <h2 class="text-xl font-bold text-primary">অধ্যায় ২: কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং</h2>
             <ul type="disc" class="list-disc pl-5 mt-2 text-gray-700">
                 <li>টপোলজি</li>
                 <li>ডেটা ট্রান্সমিশন মেথড</li>
@@ -78,7 +92,7 @@
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow" data-chapter="chapter3">
-            <h2 class="text-xl font-bold text-primary">অধ্যায় ৩: নম্বর সিস্টেম</h2>
+            <h2 class="text-xl font-bold text-primary">অধ্যায় ৩: সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস</h2>
             <ul type="disc" class="list-disc pl-5 mt-2 text-gray-700">
                 <li>সংখ্যা পদ্ধতি রুপান্তর</li>
                 <li>সংখ্যা পদ্ধতির যোগ-বিয়োগ</li>
@@ -95,14 +109,27 @@
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow" data-chapter="chapter4">
-            <h2 class="text-xl font-bold text-primary">অধ্যায় ৪: ওয়েব ডিজাইন</h2>
-            <p class="text-gray-700 mt-2">HTML ট্যাগ, CSS বেসিক স্টাইলিং ও ওয়েবপেজ লেআউট গুরুত্বপূর্ণ।</p>
+            <h2 class="text-xl font-bold text-primary">অধ্যায় ৪: ওয়েব ডিজাইন পরিচিতি এবং এইচটিএমএর</h2>
+            <ul type="disc" class="list-disc pl-5 mt-2 text-gray-700">
+                <li>ওয়েবসাইটের কাঠামো</li>
+                <li>এইচটিএমএল এর মৌলিক বিষয়সমূহ</li>
+                <li>এইচটিএমএল কোড লিখন – টেবিল, অর্ডার্ড লিস্ট ও আন অর্ডার্ড লিস্ট</li>
+                <li>ওয়েবসাইট পাবলিশিং</li>
+            </ul>
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow" data-chapter="chapter5">
-            <h2 class="text-xl font-bold text-primary">অধ্যায় ৫: প্রোগ্রামিং</h2>
-            <p class="text-gray-700 mt-2">C / Python এর সিনট্যাক্স, ভেরিয়েবল, লুপ, শর্ত নিয়ন্ত্রণ বিষয়গুলো প্র্যাকটিস
-                করো।</p>
+            <h2 class="text-xl font-bold text-primary">অধ্যায় ৫: প্রোগ্রামিং ভাষা</h2>
+            <ul type="disc" class="list-disc pl-5 mt-2 text-gray-700">
+                <li>প্রোগ্রামিং ভাষা</li>
+                <li>অ্যালগরিদম ও ফ্লোচার্ট</li>
+                <li>অনুবাদক প্রোগ্রাম</li>
+                <li>সি প্রোগ্রামিং</li>
+                <li>ডেটা টাইপ</li>
+                <li>ইনক্রিমেন্ট-ডিক্রিমেন্ট অপারেটর</li>
+                <li>স্টেটমেন্ট</li>
+                <li> লুপ</li>
+            </ul>
         </div>
     </main>
 

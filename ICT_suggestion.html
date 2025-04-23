@@ -6,7 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HSC 2025 ICT Suggestion</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0261AF',
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
     <style>
         body {
@@ -15,16 +25,16 @@
     </style>
 </head>
 
-<body class="bg-blue-50 min-h-screen">
+<body class="bg-primary/5 min-h-screen">
     <!-- Header -->
     <header class="bg-white shadow-md p-6 text-center">
-        <h1 class="text-3xl font-bold text-blue-700">HSC 2025 ICT সাজেশন</h1>
+        <h1 class="text-3xl font-bold text-primary">HSC 2025 ICT সাজেশন</h1>
         <p class="text-gray-600">পরীক্ষাভিত্তিক অধ্যায় ফিল্টার এবং PDF ডাউনলোড সুবিধা</p>
     </header>
 
     <!-- Filter + Download -->
     <div class="max-w-4xl mx-auto mt-6 px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-        <select id="chapterFilter" class="w-full md:w-1/2 p-3 rounded-md border border-blue-300">
+        <select id="chapterFilter" class="w-full md:w-1/2 p-3 rounded-md border border-primary">
             <option value="all">সকল অধ্যায় দেখাও</option>
             <option value="chapter1">অধ্যায় ১: তথ্য ও যোগাযোগ প্রযুক্তি</option>
             <option value="chapter2">অধ্যায় ২: কমিউনিকেশন সিস্টেম</option>
@@ -32,40 +42,65 @@
             <option value="chapter4">অধ্যায় ৪: ওয়েব ডিজাইন</option>
             <option value="chapter5">অধ্যায় ৫: প্রোগ্রামিং</option>
         </select>
-        <!-- <button onclick="downloadPDF()"
-            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+        <!-- Download Button (replace file path as needed) -->
+        <a href="/files/ict-suggestion-hsc-2025.pdf" download
+            class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/80 transition text-center">
             PDF ডাউনলোড
-        </button> -->
-        <a class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-            href="HSC_ICT_Exam_2025_Suggestion.pdf">PDF ডাউনলোড</a>
+        </a>
     </div>
 
-    <!-- Suggestion Container -->
-    <main id="suggestionContent" class="max-w-4xl mx-auto p-6 grid gap-6 mt-6">
-        <!-- Each Chapter Block -->
+    <!-- Suggestion Content -->
+    <main class="max-w-4xl mx-auto p-6 grid gap-6 mt-6" id="suggestionContent">
         <div class="bg-white p-5 rounded-xl shadow" data-chapter="chapter1">
-            <h2 class="text-xl font-bold text-blue-700">অধ্যায় ১: তথ্য ও যোগাযোগ প্রযুক্তি</h2>
-            <p class="text-gray-700 mt-2">এই অধ্যায় থেকে তথ্যপ্রযুক্তির সংজ্ঞা, প্রয়োগক্ষেত্র ও ভবিষ্যৎ সম্ভাবনা মুখস্থ
-                করো।</p>
+            <h2 class="text-xl font-bold text-primary">অধ্যায় ১: তথ্য ও যোগাযোগ প্রযুক্তি</h2>
+            <!-- <p class="text-gray-700 mt-2">এই অধ্যায় থেকে তথ্যপ্রযুক্তির সংজ্ঞা, প্রয়োগক্ষেত্র ও ভবিষ্যৎ সম্ভাবনা মুখস্থ
+                করো।</p> -->
+            <ul type="disc" class="list-disc pl-5 mt-2 text-gray-700">
+                <li>ভার্চুয়াল রিয়েলিটি</li>
+                <li>আর্টিফিশিয়াল ইন্টেলিজেন্স</li>
+                <li>রোবটিক্স</li>
+                <li>ক্রায়োসার্জারি</li>
+                <li>বায়োমেট্রিক</li>
+                <li>জেনেটিক ইন্জিনিয়ারিং</li>
+                <li>ন্যানোটেকনোলজি</li>
+                <li>সমাজ জীবনে তথ্য ও যোগাযোগ প্রযুক্তির প্রভাব</li>
+            </ul>
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow" data-chapter="chapter2">
-            <h2 class="text-xl font-bold text-blue-700">অধ্যায় ২: কমিউনিকেশন সিস্টেম</h2>
-            <p class="text-gray-700 mt-2">নেটওয়ার্ক, রাউটার, LAN, MAN, WAN এর ধারণা ও কাজ অনুশীলন করো।</p>
+            <h2 class="text-xl font-bold text-primary">অধ্যায় ২: কমিউনিকেশন সিস্টেম</h2>
+            <ul type="disc" class="list-disc pl-5 mt-2 text-gray-700">
+                <li>টপোলজি</li>
+                <li>ডেটা ট্রান্সমিশন মেথড</li>
+                <li>ডেটা ট্রান্সমিশন মোড</li>
+                <li>ডেটা কমিউনিকেশন মাধ্যম</li>
+            </ul>
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow" data-chapter="chapter3">
-            <h2 class="text-xl font-bold text-blue-700">অধ্যায় ৩: নম্বর সিস্টেম</h2>
-            <p class="text-gray-700 mt-2">বাইনারি, অক্টাল, হেক্সাডেসিমাল রূপান্তর অনুশীলন করো।</p>
+            <h2 class="text-xl font-bold text-primary">অধ্যায় ৩: নম্বর সিস্টেম</h2>
+            <ul type="disc" class="list-disc pl-5 mt-2 text-gray-700">
+                <li>সংখ্যা পদ্ধতি রুপান্তর</li>
+                <li>সংখ্যা পদ্ধতির যোগ-বিয়োগ</li>
+                <li>২ এর পরিপূরক</li>
+                <li>লজিক গেইটের রুপান্তর</li>
+                <li>লজিক গেইট সরলিকরণ</li>
+                <li>ডি মরগান এর সূত্র</li>
+                <li>বুলিয়ান যোগ</li>
+                <li>লজিক ফাংশন সরলীকরণ</li>
+                <li>সত্তক সারণী</li>
+                <li>এনকোডার, ডিকোডার</li>
+                <li>হাফ অ্যাডার, ফুল অ্যাডার</li>
+            </ul>
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow" data-chapter="chapter4">
-            <h2 class="text-xl font-bold text-blue-700">অধ্যায় ৪: ওয়েব ডিজাইন</h2>
+            <h2 class="text-xl font-bold text-primary">অধ্যায় ৪: ওয়েব ডিজাইন</h2>
             <p class="text-gray-700 mt-2">HTML ট্যাগ, CSS বেসিক স্টাইলিং ও ওয়েবপেজ লেআউট গুরুত্বপূর্ণ।</p>
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow" data-chapter="chapter5">
-            <h2 class="text-xl font-bold text-blue-700">অধ্যায় ৫: প্রোগ্রামিং</h2>
+            <h2 class="text-xl font-bold text-primary">অধ্যায় ৫: প্রোগ্রামিং</h2>
             <p class="text-gray-700 mt-2">C / Python এর সিনট্যাক্স, ভেরিয়েবল, লুপ, শর্ত নিয়ন্ত্রণ বিষয়গুলো প্র্যাকটিস
                 করো।</p>
         </div>
@@ -76,29 +111,16 @@
         © 2025 | সাজেশনটি শিক্ষার্থীদের প্রস্তুতির সহায়ক হিসেবে তৈরি করা হয়েছে।
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Filter Script -->
     <script>
         const filter = document.getElementById('chapterFilter');
         const cards = document.querySelectorAll('[data-chapter]');
-
         filter.addEventListener('change', () => {
             const value = filter.value;
             cards.forEach(card => {
                 card.style.display = (value === 'all' || card.dataset.chapter === value) ? 'block' : 'none';
             });
         });
-
-        // function downloadPDF() {
-        //     const element = document.getElementById('suggestionContent');
-        //     const opt = {
-        //         margin: 0.5,
-        //         filename: 'HSC_2025_ICT_Suggestion.pdf',
-        //         image: { type: 'jpeg', quality: 0.98 },
-        //         html2canvas: { scale: 2 },
-        //         jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-        //     };
-        //     html2pdf().from(element).set(opt).save();
-        // }
     </script>
 </body>
 

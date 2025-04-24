@@ -4,19 +4,44 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HSC 2025 ICT Suggestion</title>
-    <!-- Primary Meta Tags -->
-    <title>HSC 2025 ICT সাজেশন | Radiant Education</title>
+    <title>HSC 2025 ICT সাজেশন</title>
+    <meta name="description"
+        content="HSC 2025 ICT সাজেশন - অধ্যায়ভিত্তিক গুরুত্বপূর্ণ CQ ও MCQ প্রশ্ন, সাজেশন ও অধ্যায় ফিল্টার সুবিধাসহ।" />
+    <meta name="keywords"
+        content="HSC 2025, ICT সাজেশন, HSC ICT, CQ প্রশ্ন, MCQ প্রশ্ন, HSC প্রস্তুতি, আইসিটি সাজেশন" />
+    <meta name="author" content="Radiant Education" />
     <meta name="title" content="HSC 2025 ICT সাজেশন | Radiant Education">
-    <meta name="description" content="২০২৫ সালের HSC পরীক্ষার্থীদের জন্য | PDF ডাউনলোড সুবিধা — একদম ফ্রি!">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://radianteducation.site/hsc-ict-suggestion">
-    <meta property="og:title" content="HSC 2025 ICT সাজেশন | Radiant Education">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="HSC 2025 ICT সাজেশন" />
     <meta property="og:description"
-        content="২০২৫ সালের HSC পরীক্ষার্থীদের জন্য | সাজেশন ও PDF ডাউনলোড সুবিধা — একদম ফ্রি!">
-    <meta property="og:image" content="https://radianteducation.site/HSC_ICT.png">
+        content="অধ্যায়ভিত্তিক CQ ও MCQ প্রশ্নসহ ICT সাজেশন HSC 2025 পরীক্ষার্থীদের জন্য।" />
+    <meta property="og:image" content="https://radianteducation.site/HSC%20ICT.png" />
+    <meta property="og:url" content="https://radianteducation.site" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HSC 2025 ICT সাজেশন" />
+    <meta name="twitter:description"
+        content="অধ্যায়ভিত্তিক CQ ও MCQ প্রশ্নসহ ICT সাজেশন HSC 2025 পরীক্ষার্থীদের জন্য।" />
+    <meta name="twitter:image" content="https://radianteducation.site/HSC%20ICT.png" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    "name": "HSC 2025 ICT সাজেশন",
+    "description": "HSC 2025 ICT সাজেশন - অধ্যায়ভিত্তিক CQ ও MCQ প্রশ্নসহ সাজেশন।",
+    "educationalProgramMode": "online",
+    "provider": {
+      "@type": "Organization",
+      "name": "Radiant Education",
+      "url": "https://radianteducation.site"
+    }
+  }
+  </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -32,8 +57,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&family=Poppins:wght@500;600;700&display=swap"
         rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
 
     <style>
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
         body {
             font-family: 'Noto Sans Bengali', sans-serif;
         }
@@ -42,6 +74,18 @@
             font-family: 'Poppins', sans-serif;
         }
     </style>
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            header.classList.toggle('shadow-md', window.scrollY > 50);
+        });
+
+        document.addEventListener('keydown', e => {
+            if ((e.ctrlKey && (e.key === 'u' || e.key === 'c'))) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </head>
 
 <body class="bg-primary/5 min-h-screen">
@@ -50,7 +94,8 @@
         <div class="max-w-6xl mx-auto flex items-center justify-between flex-wrap">
             <!-- Logo on the left (but center on mobile) -->
             <div class="flex-shrink-0 mb-2 md:mb-0 text-center md:text-left w-full md:w-auto">
-                <img src="https://radianteducation.site/HSC_ICT.png" alt="Logo" class="h-24 w-auto mx-auto md:mx-0" />
+                <img src="https://radianteducation.site/HSC_ICT.png" alt="HSC 2025 ICT সাজেশন Logo"
+                    class="h-24 w-auto mx-auto md:mx-0" />
             </div>
 
 
@@ -172,10 +217,11 @@
         © 2025 | সাজেশনটি শিক্ষার্থীদের প্রস্তুতির সহায়ক হিসেবে তৈরি করা হয়েছে।
     </footer>
 
-    <!-- Filter Script -->
+    <!-- Script for filter -->
     <script>
         const filter = document.getElementById('chapterFilter');
-        const cards = document.querySelectorAll('[data-chapter]');
+        const cards = document.querySelectorAll('#suggestions > div');
+
         filter.addEventListener('change', () => {
             const value = filter.value;
             cards.forEach(card => {

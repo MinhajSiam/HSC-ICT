@@ -136,6 +136,32 @@
             margin-bottom: 20px;
             text-align: center;
         }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .button-group button,
+        .button-group .download-btn {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px;
+            background-color: #FD7F2C;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-group button:hover,
+        .button-group .download-btn:hover {
+            background-color: #e66a1f;
+        }
     </style>
 </head>
 
@@ -169,9 +195,16 @@
                 <option value="humanities">মানবিক</option>
             </select>
             <input type="tel" name="phone-number" placeholder="তোমার ফোন নাম্বার" required>
-            <button type="submit">সাবমিট</button>
+
+            <!-- Button Group -->
+            <div class="button-group">
+                <button type="submit">সাবমিট</button>
+                <a href="hsc-2025-ict-suggestion/" download class="download-btn">ডাউনলোড
+                    সাজেশন</a>
+            </div>
         </form>
     </div>
+
 
 </body>
 

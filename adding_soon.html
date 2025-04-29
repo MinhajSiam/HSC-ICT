@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adding Soon</title>
+    <title>Coming Soon</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -18,10 +18,21 @@
             align-items: center;
             color: white;
             text-align: center;
+            overflow: hidden;
         }
 
         .container {
             padding: 20px;
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 360px;
         }
 
         h1 {
@@ -32,15 +43,89 @@
 
         p {
             font-size: 20px;
-            margin-bottom: 30px;
-        }
-
-        .logo {
             margin-bottom: 20px;
         }
 
-        .logo img {
-            width: 150px;
+        .countdown {
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #ffdfbf;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #FD7F2C;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e76a1b;
+        }
+
+        .loading-dots {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .loading-dots span {
+            animation: blink 1.5s infinite;
+        }
+
+        .loading-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .marquee {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffdfbf;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .marquee p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll-left 20s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
         @media (max-width: 600px) {
@@ -50,6 +135,10 @@
 
             p {
                 font-size: 16px;
+            }
+
+            .countdown {
+                font-size: 18px;
             }
 
             .logo img {
@@ -64,9 +153,46 @@
         <div class="logo">
             <img src="HSC ICT.png" alt="Logo">
         </div>
-        <h1>Coming Soon...</h1>
-        <p>নতুন কিছু যুক্ত করা হচ্ছে! অনুগ্রহ করে কিছুদিন পর আবার ফিরে আসুন।</p>
+        <!-- <h1>Coming Soon</h1> -->
+        <p>নতুন কিছু যুক্ত করা হচ্ছে! অনুগ্রহ করে অপেক্ষা করুন।</p>
+
+        <div class="countdown" id="countdown">লোড হচ্ছে...</div>
+
+        <a href="https://radianteducation.site" class="btn">Back to Home</a>
+
+        <div class="loading-dots">
+            <span>.</span><span>.</span><span>.</span>
+        </div>
     </div>
+
+    <div class="marquee">
+        <p>📢 আমাদের ওয়েবসাইটে নতুন ফিচার যুক্ত করা হচ্ছে — আরও আকর্ষণীয় অভিজ্ঞতার জন্য চোখ রাখুন! 📢</p>
+    </div>
+
+    <script>
+        const launchDate = new Date("2025-05-10T00:00:00").getTime();
+        const countdownEl = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            if (distance <= 0) {
+                countdownEl.innerHTML = "আজই প্রকাশিত হচ্ছে!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownEl.innerHTML = `শুরু হতে বাকি: ${days} দিন ${hours} ঘণ্টা ${minutes} মিনিট ${seconds} সেকেন্ড`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
 </body>
 
 </html>
